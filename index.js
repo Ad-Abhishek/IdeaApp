@@ -1,6 +1,7 @@
 const express = require('express');
 const serverConfig = require('./configs/server.config');
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 const dbConfig = require('./configs/db.config');
 const userModel = require('./models/user.model');
 
@@ -39,7 +40,7 @@ const init = async() => {
         userId: "admin",
         email: "admin@email.com",
         userType: "ADMIN",
-        password: "12345"
+        password: bcrypt.hashSync("12345", 8)
     });
 
     console.log(admin);
